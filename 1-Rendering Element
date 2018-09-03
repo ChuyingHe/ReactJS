@@ -1,0 +1,74 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+
+function people() {
+
+    const data = {
+        immaNr: '123456',
+        firstName: 'John',
+        lastName: 'Doe',
+        age: '18',
+        uni: 'TUM',
+        spec: 'info',
+        city: 'Munich'
+    };
+
+    const element =(
+        <div>
+            <h1>Hello world, Nr.2!</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ImmatrikulationsNr</th>
+                        <th>{data.immaNr}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>firstName</td>
+                        <td>{data.firstName}</td>
+                    </tr>
+                    <tr>
+                        <td>lastName</td>
+                        <td>{data.lastName}</td>
+                    </tr>
+                    <tr>
+                        <td>age</td>
+                        <td>{data.age}</td>
+                    </tr>
+                    <tr>
+                        <td>uni</td>
+                        <td>{data.uni}</td>
+                    </tr>
+                    <tr>
+                        <td>spec</td>
+                        <td>{data.spec}</td>
+                    </tr>
+                    <tr>
+                        <td>city</td>
+                        <td>{data.city}</td>
+                    </tr>
+                    <tr>
+                        <td>interval</td>
+                        <td>It is {new Date().toLocaleTimeString()}.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    );
+
+
+    ReactDOM.render(
+        element,
+        document.getElementById('root')
+    );
+}
+
+// call function people() every 1000 miliseconds
+setInterval(people, 1000);
