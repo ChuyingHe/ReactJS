@@ -4,14 +4,23 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-/* First way to create Component -  Function */
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
+
+/* (1) First way to create Component -  Function */
 function Welcome(props) {
     return <h1>Hello, {props.name}</h1>
 }
+
+/* (2) Second way to create Component - Class */
+class Welcome extends React.Component {
+    render() {
+        return <h1>Hello, {this.props.name}</h1>
+    }
+}
+
 
 function Compo() {
     return (
