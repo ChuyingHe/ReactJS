@@ -4,9 +4,9 @@
  * 1) [STATE]   Adding Local State to a Class
  *              this.setState: Update component-local-state
  *              state may contain several independent variables: this.state = {posts: [], comments: []};
+ *                  => you can update them independently using this.setState({...});
  *              this.props & this.state may be updated asynchronously, if u wanna calculating with them => use this.setState([OBJECT])
  *     
  * 2) [METHOD]  Adding Lifecycle Methods to a Class
- *
  */
  
