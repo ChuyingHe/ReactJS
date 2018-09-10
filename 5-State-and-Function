@@ -3,10 +3,69 @@
  * 
  * 1) [STATE]   Adding Local State to a Class
  *              this.setState: Update component-local-state
- *              state may contain several independent variables: this.state = {posts: [], comments: []};
+ *              state
+ *                  => may contain several independent variables: this.state = {posts: [], comments: []};
  *                  => you can update them independently using this.setState({...});
+ *                  => can only accessed by [component-itself] && [his-child]
  *              this.props & this.state may be updated asynchronously, if u wanna calculating with them => use this.setState([OBJECT])
  *     
  * 2) [METHOD]  Adding Lifecycle Methods to a Class
  */
  
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+
+
+
+class Clock extends React.Component {
+    constructor(props) {
+        super(props);
+        // initializes "this.state" with an object - including current time
+        this.state =  {
+            date: new Date()
+        };
+    }
+
+    // Custom Methods - tick()
+    tick() {
+        /* this.setState: update component-local-state */
+        this.setState({
+            date: new Date()
+        });
+    }
+
+    // Lifecycle Methods - Mounting: runs after the component has been rendered to the DOM
+    componentDidMount() {
+        this.timeID = setInterval(
+            ()=>this.tick(),
+            1000
+        );
+    }
+
+    // Lifecycle Methods - Unmounting: when DOM remove the Clock
+    componentWillUnmount() {
+        clearInterval(this.timeID);
+    }
+
+    // MustHave Method - render()
+    render() {
+        return (
+            <div>
+                <h1>Hello World</h1>
+                <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+            </div>
+        );
+    }
+}
+
+
+ReactDOM.render(
+    <Clock/>,
+    document.getElementById('root')
+);
